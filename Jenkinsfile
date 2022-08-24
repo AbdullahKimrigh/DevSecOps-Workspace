@@ -17,6 +17,7 @@ pipeline {
                 success {
                     archiveArtifacts artifacts: '**/testreport.html', followSymlinks: false                  
                 }
+            }
         }
 
         stage('Publish Report') {
