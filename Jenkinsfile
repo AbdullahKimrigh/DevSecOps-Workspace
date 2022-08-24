@@ -13,6 +13,10 @@ pipeline {
             steps {
                 sh 'docker run -d -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py -t http://ec2-54-91-236-219.compute-1.amazonaws.com/ -g gen.conf -r testreport.html -z "-config scanner.strength=Medium"'
             }
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/testreport.html', followSymlinks: false                  
+                }
         }
 
         stage('Publish Report') {
