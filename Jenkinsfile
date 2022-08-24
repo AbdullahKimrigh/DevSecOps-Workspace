@@ -9,12 +9,6 @@ pipeline {
     }
 
     stages {
-         stage('Run App') {
-            steps {
-                sh 'docker run -d -it -p 80:80 vulnerables/web-dvwa .'
-            }
-        }
-
         stage('Run Zap Scan') {
             steps {
                 sh 'docker run -d -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py -t https://ec2-54-91-236-219.compute-1.amazonaws.com/ -g gen.conf -r testreport.html -z "-config scanner.strength=Medium"'
