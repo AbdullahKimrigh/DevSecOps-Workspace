@@ -18,7 +18,7 @@ pipeline {
         stage('Publish Report') {
             steps {
                 sh "aws configure set region us-east-1"
-                sh "aws s3 cp testreport.html s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"               
+                sh "aws s3 cp $(pwd):testreport.html s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"               
             }
         }
     }
