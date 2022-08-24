@@ -17,7 +17,7 @@ pipeline {
 
         stage('Publish Report') {
             steps {
-                sh "suuccess"            
+                echo "suuccess"            
             }
         }
     }
